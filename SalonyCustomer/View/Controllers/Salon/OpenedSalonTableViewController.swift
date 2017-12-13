@@ -75,6 +75,8 @@ extension OpenedSalonTableViewController {
             if let name = service.name, let duration = service.duration, let price = service.price {
                 cell.textLabel?.text = "\(name), \(duration) min., \(price)$."
             }
+            cell.backgroundColor = UIColor(red:0.75, green:0.87, blue:0.85, alpha:1.0)
+            cell.textLabel?.textColor = UIColor.white
             return cell
         }
         
@@ -82,6 +84,9 @@ extension OpenedSalonTableViewController {
             if let name = stylist.name {
                 cell.textLabel?.text = name
             }
+            
+            cell.backgroundColor = UIColor(red:0.49, green:0.27, blue:0.15, alpha:1.0)
+            cell.textLabel?.textColor = UIColor.white
             return cell
         }
         
@@ -89,7 +94,12 @@ extension OpenedSalonTableViewController {
             if let day = weekday.first, let from = day.value.from, let to = day.value.to {
                 cell.textLabel?.text = "\((day.key).capitalized) from: \(from), to: \(to)"
             }
+            cell.backgroundColor = UIColor(red:0.98, green:0.90, blue:0.59, alpha:1.0)
+            cell.textLabel?.textColor = UIColor.white
+            return cell
         }
+        cell.backgroundColor = UIColor.white
+        cell.textLabel?.textColor = UIColor.darkGray
         return cell
     }
 }
