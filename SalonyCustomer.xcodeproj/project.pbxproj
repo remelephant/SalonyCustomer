@@ -30,6 +30,7 @@
 		8327F3851FE05B04009DDB82 /* SalonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8327F3841FE05B04009DDB82 /* SalonTableViewCell.swift */; };
 		836CAEB31FE06A9600E7C0F1 /* UIActivityPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836CAEB21FE06A9600E7C0F1 /* UIActivityPresenter.swift */; };
 		836CAEBA1FE09A3400E7C0F1 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836CAEB91FE09A3400E7C0F1 /* Weekdays.swift */; };
+		83774C561FE0D02100F2FE16 /* OpenedSalonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83774C551FE0D02100F2FE16 /* OpenedSalonTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		8327F3841FE05B04009DDB82 /* SalonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalonTableViewCell.swift; sourceTree = "<group>"; };
 		836CAEB21FE06A9600E7C0F1 /* UIActivityPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityPresenter.swift; sourceTree = "<group>"; };
 		836CAEB91FE09A3400E7C0F1 /* Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekdays.swift; sourceTree = "<group>"; };
+		83774C551FE0D02100F2FE16 /* OpenedSalonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenedSalonTableViewController.swift; sourceTree = "<group>"; };
 		930030A9006F86AA5C5B5B9B /* Pods-SalonyCustomer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalonyCustomer.release.xcconfig"; path = "Pods/Target Support Files/Pods-SalonyCustomer/Pods-SalonyCustomer.release.xcconfig"; sourceTree = "<group>"; };
 		A7E190AC13A0C22760807030 /* Pods-SalonyCustomer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SalonyCustomer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SalonyCustomer/Pods-SalonyCustomer.debug.xcconfig"; sourceTree = "<group>"; };
 		BD48660537D1E586787B9719 /* Pods_SalonyCustomer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SalonyCustomer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				8327F36C1FE0449D009DDB82 /* SalonListTableViewController.swift */,
+				83774C551FE0D02100F2FE16 /* OpenedSalonTableViewController.swift */,
 			);
 			path = Salon;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				836CAEB31FE06A9600E7C0F1 /* UIActivityPresenter.swift in Sources */,
 				8327F3611FE032FD009DDB82 /* APIEndpoints.swift in Sources */,
 				836CAEBA1FE09A3400E7C0F1 /* Weekdays.swift in Sources */,
+				83774C561FE0D02100F2FE16 /* OpenedSalonTableViewController.swift in Sources */,
 				8327F37A1FE05081009DDB82 /* ModelWorkingHours.swift in Sources */,
 				8327F3661FE034F6009DDB82 /* ModelSalon.swift in Sources */,
 				8327F3681FE0350E009DDB82 /* ModelSalonCollection.swift in Sources */,

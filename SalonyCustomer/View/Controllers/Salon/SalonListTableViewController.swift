@@ -28,15 +28,22 @@ class SalonListTableViewController: UITableViewController, UIActivityPresenter {
         }
     }
     
-    var expanded: Int?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         startAnimating()
+        tableView.tableFooterView = UIView()
         server.obtainSalonCollection() { [weak self] salons in
             if let salons = salons {
                 self?.dataSource = salons
                 self?.stopAnimating()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = sender as? IndexPath {
+            if let viewController = segue.destination as? OpenedSalonTableViewController {
+                viewController.salon = dataSource[indexPath.row]
             }
         }
     }
@@ -81,32 +88,17 @@ extension SalonListTableViewController {
         } else {
             cell.salonImage.image = #imageLiteral(resourceName: "imagePlaceholder")
         }
-        
-        if indexPath.row == expanded, let id = salon.id {
-            server.obtainExtendedSalon(id: id, completion: { (salon) in
-                cell.expandedView.isHidden = false
-                cell.configureTextViews(salon: salon)
-            })
-        } else {
-            cell.expandedView.isHidden = true
-        }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if expanded != nil, expanded == indexPath.row {
-            return 90 + (tableView.cellForRow(at: indexPath) as! SalonTableViewCell).height
-        } else {
-            return 88
-        }
+        return 88
     }
 }
 
 // MARK: - UITableViewDelegate
 extension SalonListTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        expanded = indexPath.row
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        performSegue(withIdentifier: "openSalon", sender: indexPath)
     }
 }
