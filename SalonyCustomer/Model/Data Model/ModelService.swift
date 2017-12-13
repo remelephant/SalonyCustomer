@@ -11,12 +11,12 @@ import Foundation
 class ModelService: Decodable {
     var id: Int?
     var name: String?
-    var price: Double?
+    var price: String?
     var duration: Int?
     var isHome: Bool?
     var categoryName: String?
     var description: String?
-    var stylists: [ModelStylist]
+    var stylists: [ModelStylist]?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

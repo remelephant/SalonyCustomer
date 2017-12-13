@@ -54,6 +54,8 @@ class ModelSalonExtended: Decodable {
     var areaID: Int?
     var rating: Double?
 //    var assessmentFields: ModelAssessment?
+    var services: [ModelService]?
+//    var stylists: [ModelStylist]
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -100,5 +102,7 @@ class ModelSalonExtended: Decodable {
         case areaID = "area_id"
         case rating = "rating"
 //        case assessmentFields = "assessment_fields"
+        case services = "services"
+//        case stylists = "stylists"
     }
 }

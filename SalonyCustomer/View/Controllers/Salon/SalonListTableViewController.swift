@@ -87,7 +87,8 @@ extension SalonListTableViewController {
         if indexPath.row == expanded, let id = salon.id {
             server.obtainExtendedSalon(id: id, completion: { (salon) in
                 cell.expandedView.isHidden = false
-                cell.configureWorkingHours(workingHours: salon?.hours)
+                cell.configureWorkingHoursTextView(workingHours: salon?.hours)
+                cell.configureServiceTextView(services: salon?.services)
             })
         } else {
             cell.expandedView.isHidden = true
@@ -98,7 +99,7 @@ extension SalonListTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if expanded != nil, expanded == indexPath.row {
-            return 200
+            return 425
         } else {
             return 88
         }
