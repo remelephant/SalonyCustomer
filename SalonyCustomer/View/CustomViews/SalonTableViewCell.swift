@@ -14,9 +14,6 @@ class SalonTableViewCell: UITableViewCell {
     @IBOutlet weak var website: UILabel!
     @IBOutlet weak var expandedView: UIView!
     @IBOutlet weak var salonImage: UIImageView!
-    @IBOutlet weak var stylistsTextView: UITextView!
-    @IBOutlet weak var servicesTextView: UITextView!
-    @IBOutlet weak var workingHoursTextView: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,22 +23,44 @@ class SalonTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
+        print("selected")
         // Configure the view for the selected state
     }
     
-    func configureWorkingHoursTextView(workingHours: [String: ModelWorkingHours]?) {
-        if let workingHours = workingHours {
-            workingHoursTextView.text = workingDays(weekdays: workingHours)
-        } else {
-            workingHoursTextView.text = ""
-        }
+    func configureTextViews(salon: ModelSalonExtended?) {
+        var textViews: [UITextView] = []
+        expandedView.subviews.forEach { $0.removeFromSuperview() }
         
-        textViewHeight(textView: workingHoursTextView)
+        let text = configureWorkingHoursTextView(weekdays: salon?.hours)
+        let weekdaysTextView = createTextView(origin: expandedView.bounds.origin, text: text)
+        textViews.append(weekdaysTextView)
+        
+        if let text = configureServiceTextView(services: salon?.services).text {
+            let servicesTextView = createTextView(origin: CGPoint(x: weekdaysTextView.bounds.minX, y: weekdaysTextView.bounds.maxY), text: text)
+            textViews.append(servicesTextView)
+            if let stylists = configureServiceTextView(services: salon?.services).stylists {
+                if let text = configureStylistsTextView(stylists: stylists) {
+                    let stylistsTextView = createTextView(origin: CGPoint(x: servicesTextView.bounds.minX, y: servicesTextView.bounds.maxY), text: text)
+                    textViews.append(stylistsTextView)
+                }
+            }
+        }
     }
     
-    private func workingDays(weekdays: [String: ModelWorkingHours]) -> String {
-        
-        guard weekdays.keys.count > 0 else { return "Information about working hours is missing" }
+    private func createTextView(origin: CGPoint, text: String) -> UITextView {
+        let textView = UITextView()
+        expandedView.addSubview(textView)
+        textView.frame.origin = origin
+        textView.frame.size.width = expandedView.bounds.width
+        textView.text = text
+        textView.isScrollEnabled = false
+        textView.sizeToFit()
+        return textView
+    }
+    
+    func configureWorkingHoursTextView(weekdays: [String: ModelWorkingHours]?) -> String {
+
+        guard let weekdays = weekdays, weekdays.keys.count > 0 else { return "Information about working hours is missing" }
         
         var mutableWeekdays = weekdays
         
@@ -62,11 +81,9 @@ class SalonTableViewCell: UITableViewCell {
         return days
     }
     
-    func configureStylistsTextView(stylists: [ModelStylist]?) {
+    func configureStylistsTextView(stylists: [ModelStylist]?) -> String? {
         var text = "Stylists -"
-        
-        guard let stylists = stylists else { return }
-        
+        guard let stylists = stylists, !stylists.isEmpty else { return nil }
         for stylist in stylists {
             if let name = stylist.name {
                 text.append(" \(name)")
@@ -77,34 +94,24 @@ class SalonTableViewCell: UITableViewCell {
                 }
             }
         }
-        stylistsTextView.text = text
-        textViewHeight(textView: stylistsTextView)
+        return text
     }
     
-    func configureServiceTextView(services: [ModelService]?) {
+    func configureServiceTextView(services: [ModelService]?) -> (text: String?, stylists: [ModelStylist]?) {
         var text = ""
         guard let services = services  else {
-            return
+            return (nil, nil)
         }
-        
+
         var stylists = [ModelStylist]()
         for service in services {
             if let stylistArray = service.stylists {
                 stylistArray.forEach { stylists.append($0) }
             }
             if let name = service.name, let duration = service.duration, let price = service.price {
-                text.append("Service \(name): duration - \(duration), price - \(price)")
+                text.append("Service \(name): duration - \(duration) min., price - \(price)$. ")
             }
-            
-            configureStylistsTextView(stylists: stylists)
         }
-        
-        textViewHeight(textView: servicesTextView)
-    }
-    
-    private func textViewHeight(textView : UITextView) {
-        textView.translatesAutoresizingMaskIntoConstraints = true
-        textView.sizeToFit()
-        textView.isScrollEnabled = false
+        return (text, stylists)
     }
 }

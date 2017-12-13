@@ -47,51 +47,7 @@
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJm-H6-IdH">
                                             <rect key="frame" x="0.0" y="93" width="320" height="331.5"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMl-Kp-XNK">
-                                                    <rect key="frame" x="8" y="8" width="304" height="100"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="dIC-dk-SaX"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ar2-hT-uRC">
-                                                    <rect key="frame" x="8" y="116" width="304" height="100"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="Eoy-zY-BbN"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="110-x0-3FO">
-                                                    <rect key="frame" x="8" y="224" width="304" height="100"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="djD-eW-WZp"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                                                </textView>
-                                            </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="110-x0-3FO" firstAttribute="leading" secondItem="bJm-H6-IdH" secondAttribute="leading" constant="8" id="2q1-AI-IK0"/>
-                                                <constraint firstItem="dMl-Kp-XNK" firstAttribute="top" secondItem="bJm-H6-IdH" secondAttribute="top" constant="8" id="5L3-1o-RcK"/>
-                                                <constraint firstItem="Ar2-hT-uRC" firstAttribute="top" secondItem="dMl-Kp-XNK" secondAttribute="bottom" constant="8" id="5u3-n5-Cs2"/>
-                                                <constraint firstItem="Ar2-hT-uRC" firstAttribute="leading" secondItem="bJm-H6-IdH" secondAttribute="leading" constant="8" id="7AQ-Uk-LTi"/>
-                                                <constraint firstAttribute="trailing" secondItem="110-x0-3FO" secondAttribute="trailing" constant="8" id="ETw-rz-m5A"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ar2-hT-uRC" secondAttribute="trailing" constant="8" id="NN9-93-tbV"/>
-                                                <constraint firstItem="110-x0-3FO" firstAttribute="top" secondItem="Ar2-hT-uRC" secondAttribute="bottom" constant="8" id="cPn-3t-fSA"/>
-                                                <constraint firstItem="110-x0-3FO" firstAttribute="top" secondItem="Ar2-hT-uRC" secondAttribute="bottom" constant="8" id="dfm-oO-dx6"/>
-                                                <constraint firstAttribute="trailing" secondItem="dMl-Kp-XNK" secondAttribute="trailing" constant="8" id="jrH-b9-liD"/>
-                                                <constraint firstItem="dMl-Kp-XNK" firstAttribute="leading" secondItem="bJm-H6-IdH" secondAttribute="leading" constant="8" id="nb0-D2-lo5"/>
-                                            </constraints>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -113,10 +69,7 @@
                                     <outlet property="expandedView" destination="bJm-H6-IdH" id="YZT-uZ-Mfc"/>
                                     <outlet property="name" destination="lsW-gy-VL6" id="EcK-mS-yau"/>
                                     <outlet property="salonImage" destination="ZiW-it-wQw" id="WD0-Ex-Ubo"/>
-                                    <outlet property="servicesTextView" destination="110-x0-3FO" id="MpP-yn-ZHt"/>
-                                    <outlet property="stylistsTextView" destination="Ar2-hT-uRC" id="XDN-3b-L4H"/>
                                     <outlet property="website" destination="kPg-Wl-hSl" id="vWk-ks-bzs"/>
-                                    <outlet property="workingHoursTextView" destination="dMl-Kp-XNK" id="eby-49-utB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

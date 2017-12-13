@@ -50,12 +50,10 @@ extension SalonListTableViewController {
 // MARK: - UITableViewDataSource
 extension SalonListTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return dataSource.count
     }
     
@@ -87,8 +85,7 @@ extension SalonListTableViewController {
         if indexPath.row == expanded, let id = salon.id {
             server.obtainExtendedSalon(id: id, completion: { (salon) in
                 cell.expandedView.isHidden = false
-                cell.configureWorkingHoursTextView(workingHours: salon?.hours)
-                cell.configureServiceTextView(services: salon?.services)
+                cell.configureTextViews(salon: salon)
             })
         } else {
             cell.expandedView.isHidden = true
@@ -99,7 +96,7 @@ extension SalonListTableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if expanded != nil, expanded == indexPath.row {
-            return 425
+            return 90 + (tableView.cellForRow(at: indexPath) as! SalonTableViewCell).height
         } else {
             return 88
         }
@@ -110,7 +107,6 @@ extension SalonListTableViewController {
 extension SalonListTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         expanded = indexPath.row
-        let store = dataSource[indexPath.row]
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
